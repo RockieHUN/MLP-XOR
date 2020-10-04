@@ -22,6 +22,7 @@ class NeuralNetwork{
         //TO-DO: randomize? ^
     }
 
+    //Guessing the answer
     feedforward(input){
 
         let input_matrix = Matrix.fromArray(input);
@@ -35,5 +36,27 @@ class NeuralNetwork{
         output.map(sigmoid);
 
         return output.toArray();
+    }
+
+
+    // Training(Backpropagation) : Calculating the error, adjusting weights
+    train(inputs, targets){
+        let outputs = this.feedforward(inputs);
+
+        outputs= Matrix.fromArray(outputs);
+        targets= Matrix.fromArray(targets);
+
+
+        // error = targets - outputs
+        let errors = Matrix.subtract(targets,outputs)
+
+        //calculating the hidden layer errors
+        let trans_ho= Matrix.transpose(this.weights_ho);
+        let hidden_errors = Matrix.multiply(trans_ho,errors);
+
+
+        outputs.print();
+        targets.print();
+        errors.print();
     }
 }

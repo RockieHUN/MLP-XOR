@@ -55,12 +55,12 @@ class Matrix{
         return result;  
     }
 
-    transpose(){
-        let trans = new Matrix(this.cols, this.rows);
+    static transpose(matrix){
+        let trans = new Matrix(matrix.cols, matrix.rows);
 
-        for (let i =0 ; i< this.rows; i++){
-            for (let j=0; j<this.cols; j++){
-                trans.matrix[j][i]=this.matrix[i][j];
+        for (let i =0 ; i< matrix.rows; i++){
+            for (let j=0; j<matrix.cols; j++){
+                trans.matrix[j][i]=matrix.matrix[i][j];
             }
         }
         return trans;
@@ -81,6 +81,23 @@ class Matrix{
                 this.matrix[i][j]+=matrix.matrix[i][j];
             }
         }
+    }
+
+    static subtract(a,b){
+        if (!(a instanceof Matrix) || !(b instanceof Matrix)){
+            console.log("Both input must be Matrix!");
+            return;
+        }
+        if ((a.cols!=b.cols)||(a.rows!=b.rows)){
+            console.log("Inputs must have same dimensions!");
+            return;
+        }
+        let result = new Matrix(a.rows, a.cols);
+
+        for (let i = 0; i < a.rows; i++)
+            for (let j = 0; j < a.cols; j++)
+                result.matrix[i][j] = a.matrix[i][j] - b.matrix[i][j];
+        return result;
     }
 
     static fromArray(array){

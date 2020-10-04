@@ -5,17 +5,20 @@ let b= new Matrix(3,3);
 a.randomize();
 b.randomize();
 
-console.table(a.matrix);
-console.table(b.matrix);
-console.table(Matrix.multiply(a,b).matrix);
+//console.table(a.matrix);
+//console.table(Matrix.transpose(a).matrix);
+/*console.table(b.matrix);
+console.table(Matrix.subtract(a,b).matrix);*/
+
 
 
 // NN
 
-let nn = new NeuralNetwork(2,2,1);
+let nn = new NeuralNetwork(2,2,2);
 
-let input = [1,0];
-let output = nn.feedforward(input);
+let inputs = [1,0];
+let targets = [1,0];
+//let output = nn.feedforward(input);
+nn.train(inputs,targets)
 
-
-console.log("guess: "+output);
+//console.log("guess: "+output);
