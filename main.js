@@ -29,7 +29,7 @@ let nn = new NeuralNetwork(2,2,1);   // 2 input nodes, 2 hidden nodes, 1 output 
 
 for (let i = 0; i< 100000; i++)
 {
-    let r_number = Math.floor(Math.random()*4+1);
+    let r_number = Math.floor(Math.random()*4 +1 );   //random number between 1 and 4
     nn.train(examples[r_number].input, examples[r_number].target);
 }
 
